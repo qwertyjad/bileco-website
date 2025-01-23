@@ -1,0 +1,137 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.social-header {
+    background-color: #FCDA00;
+    padding: 10px 0;
+}
+
+.social-header a {
+    color: #fff;
+    margin: 0 15px;
+    font-size: 18px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.social-header a:hover {
+    color: #00aced;
+}
+
+.navbar {
+    background-color: #343a40;
+    padding: 10px 20px;
+}
+
+.navbar-brand {
+    font-size: 60px;
+    font-weight: bold;
+    color: #FCDA00 !important; /* Set "BELICO" to orange */
+}
+
+.navbar-brand img {
+    height: 70px;
+    margin-right: 10px;
+}
+
+.navbar h5 {
+    font-weight: lighter;
+    color: #fff;
+}
+
+.jumbotron {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.display-4 {
+    color: #343a40;
+}
+
+.card {
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    background-color: #ffffff;
+}
+
+.card-title {
+    font-weight: bold;
+}
+
+.card-text {
+    color: #6c757d;
+}
+
+.container {
+    padding: 20px;
+}
+
+.text-dark {
+    color: #343a40 !important;
+}
+
+/* Navbar toggle icon */
+.navbar-toggler {
+    border: none;
+    outline: none;
+}
+
+.navbar-toggler-icon {
+    width: 30px;
+    height: 3px;
+    background-color: #fff;
+    transition: transform 0.3s ease;
+}
+
+.navbar-toggler.collapsed .navbar-toggler-icon {
+    transform: rotate(0);
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: #fff;
+    position: absolute;
+    transition: transform 0.3s ease;
+}
+
+.navbar-toggler-icon::before {
+    top: -8px;
+}
+
+.navbar-toggler-icon::after {
+    top: 8px;
+}
+
+.navbar-toggler.collapsed .navbar-toggler-icon::before {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.navbar-toggler.collapsed .navbar-toggler-icon::after {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Sliding effect for navbar */
+.navbar-collapse {
+    transition: transform 0.5s ease-in-out;
+    transform: translateX(100%);
+}
+
+.navbar-collapse.show {
+    transform: translateX(0);
+}
+hr {
+    border: 0;
+    height: 1px;
+    background-color: white;
+    margin: 20px 0; /* Optional: Adds space above and below the line */
+}
