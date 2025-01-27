@@ -1,0 +1,505 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>About Us</title>  
+    <link rel="stylesheet" href="bootstrap-4.6.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="bootstrap-4.6.0/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="assets/images/icons.png" type="image/x-icon">\
+    <style>  
+        body {  
+            font-family: Arial, sans-serif;  
+            margin: 0;  
+            padding: 0;  
+            background-color: #f5f5f5;  
+        }  
+
+        header {  
+            background-image: url('https://scontent.fceb1-3.fna.fbcdn.net/v/t39.30808-6/474889939_643016621406293_3478537521870451372_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHV_wWYTSpB9CbkxivbQobQCirquoMgynQKKuq6gyDKdKYp0-Noj34dyein9SxQIlYpZsyq2UND5kYhK_AzAFS2&_nc_ohc=Hfe5-RIvq-UQ7kNvgFS4QIU&_nc_zt=23&_nc_ht=scontent.fceb1-3.fna&_nc_gid=Aq_tGhDcwegcCKg2rJzxkLS&oh=00_AYCIDMED71JjsWgE1MVWGGHAVQ_Ob4qZRQeNpSxQq2DbAA&oe=679D0180');  
+            background-repeat: no-repeat;  
+            background-position: center;  
+            background-size: cover; 
+            margin-bottom: 20px; 
+            height: 300px;
+        
+        }  
+
+        .social-header {
+            background-color: #FCDA00;
+            padding: 10px 0;
+        }
+
+        .social-header a {
+            color: #002A43;
+            margin: 0 15px;
+            font-size: 18px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-header a:hover {
+            color: #00aced;
+        }
+
+        .navbar {
+            background-color: #002A43;
+            margin-bottom: 0;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            position: relative;
+            z-index: 1050;
+        }
+
+        .navbar-brand {
+            font-size: 50px;
+            font-weight: bold;
+            color: #FCDA00 !important;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand img {
+            height: 50px;
+            width: 50px;
+            margin-right: 10px;
+        }
+
+        hr {
+            margin: 0;
+            padding: 0;
+            background-color: white;
+        }
+
+        .container {
+            padding: 10px;
+        }
+
+        .jumbotron {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+        }
+
+        .navbar-toggler-icon {
+            width: 30px;
+            height: 3px;
+            background-color: yellow;
+            position: relative;
+            display: block;
+            transition: all 0.3s;
+        }
+
+        .navbar-toggler-icon::before,
+        .navbar-toggler-icon::after {
+            content: "";
+            width: 30px;
+            height: 3px;
+            background-color: yellow;
+            position: absolute;
+            left: 0;
+            transition: all 0.3s;
+        }
+
+        .navbar-toggler-icon::before {
+            top: -8px;
+        }
+
+        .navbar-toggler-icon::after {
+            bottom: -8px;
+        }
+
+        .navbar-toggler.collapsed .navbar-toggler-icon {
+            background-color: yellow;
+        }
+
+        .navbar-toggler.collapsed .navbar-toggler-icon::before {
+            transform: rotate(0deg);
+        }
+
+        .navbar-toggler.collapsed .navbar-toggler-icon::after {
+            transform: rotate(0deg);
+        }
+
+        .navbar-toggler:not(.collapsed) .navbar-toggler-icon {
+            background-color: transparent;
+        }
+
+        .navbar-toggler:not(.collapsed) .navbar-toggler-icon::before {
+            top: 0;
+            transform: rotate(45deg);
+        }
+
+        .navbar-toggler:not(.collapsed) .navbar-toggler-icon::after {
+            bottom: 0;
+            transform: rotate(-45deg);
+        }
+
+        .navbar-outline {
+            border-bottom: 2px solid #FCDA00;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1040;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        .search-overlay {
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 1050;
+            width: 80%;
+            max-width: 500px;
+        }
+
+        @media (max-width: 991.98px) {
+            .navbar-nav {
+                text-align: center;
+            }
+
+            .search-bar {
+                display: none;
+            }
+
+            .search-button {
+                display: block;
+                margin-bottom: 10px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .search-bar {
+                display: flex;
+            }
+
+            .search-button {
+                display: none;
+            }
+
+        .container {  
+            display: flex;  
+            margin: 20px;  
+            justify-content: center; /* Center the container */  
+            flex-wrap: wrap; /* Allow items to wrap */  
+        }  
+
+
+        .overlay {  
+            display: none; /* Initially hidden */  
+            position: fixed;  
+            top: 0;  
+            left: 0;  
+            width: 100%;  
+            height: 100%;  
+            background: rgba(0, 0, 0, 0.7);  
+            justify-content: center;  
+            align-items: center;  
+        }  
+
+        .search-overlay {  
+            background: white;  
+            padding: 20px;  
+            border-radius: 8px;  
+        }  
+        .container {
+            display: flex;
+            justify-content: space-between;
+            margin: 0 auto;
+            max-width: 5000px; 
+            margin-top: 20px;
+        }
+        
+       
+    
+        .content {
+            flex: 60; /* Adjusted to accommodate wider sidebars */
+            margin-right: 20px; /* Space between the content and the right sidebar */
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: justify;
+            text-decoration: none; /* No underline */
+            color: #555; /* Neutral color */
+            font-size: 14px; /* Smaller text */
+            transition: color 0.3s ease;
+        }
+    
+        .content h2 {  
+            color: #1f4e79;  
+            text-transform: uppercase;
+            margin: 0;
+            display: inline;  
+            padding-bottom: 5px;
+            position: relative;
+        }  
+
+        .content h2::after {
+            content: '';
+            display: block;
+            width: 90%; /* Makes the yellow line full width */
+            height: 5px; /* Adjust the thickness as needed */
+            background-color: #f2b01e; /* Yellow color */
+            margin-top: 10px; 
+            margin-bottom: 15px;/* Adjust spacing below the text */
+        }
+    
+     
+/* General Sidebar Styling */
+.sidebar {
+    position: relative;
+    width: 300px; /* Increased width from 200px to 300px */
+    margin-left: auto; /* Pushes it to the far right for the right sidebar */
+    margin-right: 30px; /* Space from the page edge */
+    padding: 20px;
+    background-color: #fff; /* White background */
+    border-left: 1px solid #ddd; /* Subtle left border */
+    max-width: 500px; /* Optional: Max width if needed */
+}
+
+/* Headings (e.g., Categories, Archives) */
+.sidebar h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333; /* Dark text for visibility */
+    border-left: 3px solid #1E90FF; /* Blue accent line */
+    padding-left: 10px;
+    margin-bottom: 15px;
+}
+
+/* List Styling */
+.sidebar ul {
+    list-style: none; /* Remove bullets */
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px; /* Space between items */
+}
+
+.sidebar ul li a {
+    text-decoration: none; /* No underline */
+    color: #1f4e79;   /* Neutral color */
+    font-size: 14px; /* Smaller text */
+    transition: color 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+    color: #1E90FF; /* Match the blue accent */
+}
+
+/* Search Box */
+.sidebar .search-box {
+    margin-bottom: 20px;
+}
+
+.sidebar .search-box input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+        }
+
+
+        
+        /* Other styles remain unchanged... */  
+    </style>  
+</head>  
+<body>  
+
+<!-- Social Media Header -->  
+<section class="header">  
+    <div class="social-header text-center">  
+        <a href="https://facebook.com" target="_blank">Facebook</a>  
+        <a href="https://twitter.com" target="_blank">Twitter</a>  
+        <a href="https://instagram.com" target="_blank">Instagram</a>  
+        <a href="https://linkedin.com" target="_blank">LinkedIn</a>  
+        <a href="https://youtube.com" target="_blank">YouTube</a>  
+    </div>  
+</section>  
+
+<!-- Main Navigation Bar -->  
+<nav class="navbar navbar-expand-lg navbar-dark navbar-outline">  
+    <a class="navbar-brand" href="#">  
+        <img src="assets/images/icons.png" alt="BILECO">  
+        BILECO  
+    </a>  
+
+    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">  
+        <span class="navbar-toggler-icon"></span>  
+    </button>  
+    <div class="collapse navbar-collapse" id="navbarNav">  
+        <ul class="navbar-nav ml-auto">  
+            <li class="nav-item active">  
+                <a class="nav-link" href="#">Home</a>  
+            </li>  
+            <li class="nav-item">  
+                <a class="nav-link" href="#">About</a>  
+            </li>  
+            <li class="nav-item">  
+                <a class="nav-link" href="#">Services</a>  
+            </li>  
+            <li class="nav-item">  
+                <a class="nav-link" href="#">Contact</a>  
+            </li>  
+        </ul>  
+
+        <!-- Desktop Search Bar -->  
+        <form class="form-inline ml-lg-3 search-bar">  
+            <div class="input-group">  
+                <input class="form-control" type="text" placeholder="Search" aria-label="Search">  
+                <div class="input-group-append">  
+                    <button class="btn btn-outline-success" type="submit">Search</button>  
+                </div>  
+            </div>  
+        </form>  
+
+        <!-- Mobile Search Button -->  
+        <div class="search-button text-center d-lg-none">  
+            <button class="btn btn-outline-light" id="mobileSearchButton">Search</button>  
+        </div>  
+    </div>  
+</nav>  
+
+<!-- Mobile Search Overlay -->  
+<div class="overlay" id="mobileSearchOverlay">  
+    <div class="search-overlay">  
+        <form class="form-inline">  
+            <div class="input-group">  
+                <input class="form-control" type="text" placeholder="Search" aria-label="Search">  
+                <div class="input-group-append">  
+                    <button class="btn btn-outline-success" type="submit">Search</button>  
+                </div>  
+            </div>  
+        </form>  
+    </div>  
+</div>  
+
+<!-- Header Image -->  
+<header></header>  
+
+<!-- Main Content -->  
+<div class="container">  
+    <div class="sidebar">  
+        <ul>  
+            <li><a href="#">Apply for New Connection</a></li>  
+            <li><a href="#">Rights & Obligations</a></li>  
+            <li><a href="#">Billing Information</a></li>  
+            <li><a href="#">Qualification of EC Board</a></li>  
+            <li><a href="#">Senior Citizen Discount</a></li>  
+            <li><a href="#">Maintenance Schedule</a></li>  
+            <li><a href="#">Power Rates</a></li>  
+            <li><a href="#">Generation Mix</a></li>  
+            <li><a href="#">Safety Tips</a></li>  
+            <li><a href="#">Tipid Tips</a></li> 
+        </ul>  
+    </div>  
+
+    <div class="content">
+        <h2>Apply for New Connection</h2>
+        <ol>
+            <li>
+                The applicant must attend Pre-Membership Orientation Seminar (PMOS) scheduled every Tuesday, 9:00 AM at BILECO main office. A certificate of attendance will be subsequently issued.
+            </li>
+            <li>
+                The following documents must be submitted at the ISD Office:
+                <ul>
+                    <li>Approved Electrical Plan/Layout</li>
+                    <li>Approved Application for Electrical Permit</li>
+                    <li>Certificate of Final Inspection/Completion</li>
+                    <li>Fire Safety Inspection Certificate</li>
+                    <li>Declaration of Actual Load and Detailed Map</li>
+                    <li>Copy of official receipt of service drop wire purchased</li>
+                    <li>Marriage Contract (if married)</li>
+                    <li>Electrician Completion Report</li>
+                    <li>Certificate of PMOS Attendance</li>
+                    <li>Picture of House/Building</li>
+                    <li>Lot Owner Written Consent and Valid ID</li>
+                    <li>2x2 picture with white background</li>
+                </ul>
+            </li>
+            <li>
+                After verification of the submitted documents, the Electrical Inspector will check the applied connections as to conformity to the Philippine Electrical Code. Schedule of electrical inspection is as follows:
+            </li>
+            <ul>
+                <li>Monday - Almeria & Kawayan</li>
+                <li>Tuesday - Biliran & Cabucgayan</li>
+                <li>Wednesday - Naval</li>
+                <li>Thursday - Caibiran & Culaba</li>
+                <li>Friday - Naval</li>
+            </ul>
+            <li>
+                After inspection, the Inspector will advise the applicant to pay the connection and other associated fees at the main office after 2 to 3 days.
+            </li>
+            <li>
+                Once payment is made, the service dropping connection will follow within 2 days.
+            </li>
+        </ol>
+    </div>
+    
+    
+
+    <div class="sidebar">
+        <div class="search-box">
+            <input type="text" placeholder="Search">
+        </div>
+        <h2>Categories</h2>
+        <ul>
+            <li><a href="#">Announcements</a></li>
+            <li><a href="#">Bids & Awards</a></li>
+            <li><a href="#">CSR Programs</a></li>
+            <li><a href="#">Generation Mix</a></li>
+            <li><a href="#">Maintenance Schedule</a></li>
+            <li><a href="#">National Stories</a></li>
+            <li><a href="#">News & Events</a></li>
+            <li><a href="#">Power Rate</a></li>
+            <li><a href="#">Uncategorized</a></li>
+        </ul>
+        <h2>Archives</h2>
+        <ul>
+            <!-- Add archive links here -->
+        </ul>
+    </div>
+    
+<hr>  
+
+<!-- Search Results -->  
+<div class="container">  
+    <div class="search-results" id="searchResults">  
+        <ul id="searchList"></ul>  
+    </div>  
+</div>  
+
+<!-- JavaScript for Mobile Search Button -->  
+<script>  
+    document.getElementById('mobileSearchButton').addEventListener('click', function() {  
+        document.getElementById('mobileSearchOverlay').style.display = 'flex';  
+    });  
+    
+    document.getElementById('mobileSearchOverlay').addEventListener('click', function() {  
+        this.style.display = 'none';  
+    });  
+</script>  
+
+</body>  
