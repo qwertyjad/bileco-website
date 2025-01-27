@@ -165,31 +165,22 @@
                 text-align: center;
             }
 
-            .search-button {
-                display: block;
-                margin-bottom: 10px;
-                text-align: center;
-            }
-
             .search-bar {
                 display: none;
             }
 
-            .search-icon {
-                display: none;
+            .search-button {
+                display: block;
+                margin-bottom: 10px;
             }
         }
 
         @media (min-width: 992px) {
             .search-bar {
-                display: block;
+                display: flex;
             }
 
             .search-button {
-                display: none;
-            }
-
-            .search-icon {
                 display: none;
             }
         }
@@ -211,16 +202,10 @@
 
     <!-- Main Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-outline">
-        <!-- Mobile Search Button -->
-        
-
         <a class="navbar-brand" href="#">
             <img src="assets/images/icons.png" alt="BILECO">
             BILECO
         </a>
-        <div class="search-button text-center">
-            <button class="btn btn-outline-light" id="mobileSearchButton">Search</button>
-        </div>
 
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -250,11 +235,16 @@
                     </div>
                 </div>
             </form>
+
+            <!-- Mobile Search Button -->
+            <div class="search-button text-center d-lg-none">
+                <button class="btn btn-outline-light" id="mobileSearchButton">Search</button>
+            </div>
         </div>
     </nav>
 
-    <!-- Overlay -->
-    <div class="overlay" id="searchOverlay">
+    <!-- Mobile Search Overlay -->
+    <div class="overlay" id="mobileSearchOverlay">
         <div class="search-overlay">
             <form class="form-inline">
                 <div class="input-group">
@@ -268,6 +258,12 @@
     </div>
 
     <hr>
+ <!-- Search Results -->
+ <div class="container">
+    <div class="search-results" id="searchResults">
+        <ul id="searchList"></ul>
+    </div>
+</div>
 
     <!-- Main Content -->
     <div class="container">
@@ -285,16 +281,35 @@
 
     <script>
         $(document).ready(function () {
-            $('#mobileSearchButton').on('click', function () {
-                $('#searchOverlay').addClass('active');
+            const pages = [
+                { name: "Home", link: "#" },
+                { name: "About", link: "#" },
+                { name: "Services", link: "#" },
+                { name: "Contact", link: "#" }
+            ];
+
+            $('#searchButton').on('click', function () {
+                const query = $('#searchInput').val().toLowerCase();
+                const results = pages.filter(page => page.name.toLowerCase().includes(query));
+
+                const $searchList = $('#searchList');
+                $searchList.empty();
+
+                if (results.length > 0) {
+                    results.forEach(result => {
+                        $searchList.append(`<li onclick="location.href='${result.link}'">${result.name}</li>`);
+                    });
+                    $('#searchResults').show();
+                } else {
+                    $searchList.append('<li>No results found</li>');
+                    $('#searchResults').show();
+                }
             });
 
-            $('#searchOverlay').on('click', function () {
-                $(this).removeClass('active');
-            });
-
-            $('.search-overlay').on('click', function (e) {
-                e.stopPropagation(); // Prevent closing when clicking inside the search form
+            $('#searchInput').on('input', function () {
+                if (!$(this).val()) {
+                    $('#searchResults').hide();
+                }
             });
         });
     </script>
